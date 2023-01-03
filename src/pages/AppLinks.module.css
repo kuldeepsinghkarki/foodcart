@@ -1,0 +1,56 @@
+.header {
+  width: 80%;
+  height: 2rem;
+  background-color: #1f1103;
+  padding: 0 10%;
+}
+
+.header nav {
+  height: 100%;
+}
+
+.header ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: left;
+  justify-content: left;
+}
+
+.header li {
+  margin: 0 1rem;
+  width: 15rem;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: #95bcf0;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid #95bcf0;
+}
+
+.button {
+  font: inherit;
+
+  cursor: pointer;
+  background-color: #8a2b06;
+  border: 1px solid #8a2b06;
+  color: white;
+  padding: 0.25rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.button:hover,
+.button:active {
+  background-color: #641e03;
+  border-color: #641e03;
+}
