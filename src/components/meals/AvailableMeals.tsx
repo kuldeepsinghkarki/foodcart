@@ -1,8 +1,10 @@
 import Card from "../ui/Card";
 import classes from "./AvailableMeals.module.css";
 import Mealitem from "./mealitem/MealItem";
+import { MealsDataType } from "../models/MealsDataType";
+import { PropsWithChildren } from "react";
 
-const AvailableMeals = (props) => {
+const AvailableMeals = (props: PropsWithChildren<{ mealsData: MealsDataType }>) => {
   const meals = props.mealsData;
 
   const mealsList = meals.map((meal) => {
@@ -13,6 +15,7 @@ const AvailableMeals = (props) => {
       <Card>
         <ul>{mealsList}</ul>
       </Card>
+      <>{props.children}</>
     </section>
   );
 };

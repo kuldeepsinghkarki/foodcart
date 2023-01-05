@@ -1,14 +1,16 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 
 import { cartActions } from "../../../store/cart-slice";
+
 import classes from "./MealItem.module.css";
 import MealItemForm from "./MealitemForm";
 
-const Mealitem = (props) => {
+const Mealitem: React.FC<{ name: string; description: string; id: string; price: number }> = (props) => {
   const price = `$${props.price.toFixed(2)}`;
   const dispatch = useDispatch();
 
-  const onAddToCartHandler = (enteredQuantity) => {
+  const onAddToCartHandler = (enteredQuantity: number) => {
     console.log("Card handler additon", enteredQuantity);
     dispatch(
       cartActions.addItem({
