@@ -1,10 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
+
+type ShippingInfo = {
+  name: string;
+  street: string;
+  postalCode: string;
+  city: string;
+};
+
+type Meal = {
+  id: string;
+  price: number;
+  quantity: number;
+  totalPrice: number;
+  name: string;
+};
+export type CartState = {
+  items: Meal[];
+  shippingInfo: ShippingInfo;
+  totalAmount: number;
+  totalQuantity: number;
+  changed: boolean;
+};
 
 const initialCartState = {
   items: [],
   shippingInfo: { name: "", street: "", postalCode: "", city: "" },
   totalAmount: 0,
+  totalQuantity: 0,
   changed: false,
 };
 
@@ -12,13 +34,13 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: initialCartState,
   reducers: {
-    replaceCart(state, action) {
+    replaceCart(state: CartState, action) {
       state.items = action.payload.items;
       state.totalAmount = action.payload.totalAmount;
       state.changed = false;
     },
 
-    addItem(state, action) {
+    addItem(state: CartState, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
       if (!existingItem) {
@@ -37,9 +59,9 @@ const cartSlice = createSlice({
       state.changed = true;
     },
 
-    removeItem(state, action) {
+    removeItem(state: CartState, action) {
       const id = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
+      const existingItem: Meal = state.items.find((item) => item.id === id)!;
       state.totalQuantity--;
       if (existingItem.quantity === 1) {
         state.items = state.items.filter((item) => item.id !== id);

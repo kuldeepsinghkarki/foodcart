@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import { MealsDataType } from "../components/models/MealsDataType";
 import AuthContext from "../store/auth-context";
 
-const backendURL = process.env.REACT_APP_DB_HOST + process.env.REACT_APP_MEALS;
+const backendURL = (process.env.REACT_APP_DB_HOST as string) + process.env.REACT_APP_MEALS;
 
 /**
  *
@@ -9,7 +10,7 @@ const backendURL = process.env.REACT_APP_DB_HOST + process.env.REACT_APP_MEALS;
  * @param {*} id
  * @returns
  */
-export async function fetchDataByParams(url, id) {
+export async function fetchDataByParams(url: string, id: string) {
   console.log("inside datautils");
   let response = await fetch(url);
   if (!response.ok) {
@@ -21,7 +22,7 @@ export async function fetchDataByParams(url, id) {
   return myofferDetails;
 }
 
-function timeout(delay) {
+function timeout(delay: number) {
   return new Promise((res) => setTimeout(res, delay));
 }
 

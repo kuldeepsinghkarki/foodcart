@@ -2,7 +2,7 @@ import { useRouteError } from "react-router-dom";
 import AppLinks from "./AppLinks";
 
 function ErrorPage() {
-  const error = useRouteError();
+  const error: any = useRouteError();
 
   return (
     <>

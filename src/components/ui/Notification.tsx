@@ -1,6 +1,7 @@
+import { NotificationData } from "../../store/ui-slice";
 import classes from "./Notification.module.css";
 
-const Notification = (props) => {
+const Notification = (props: NotificationData) => {
   let specialClasses = "";
 
   if (props.status === "error") {

@@ -1,6 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialUIState = {
+export type NotificationData = {
+  status: string;
+  title: string;
+  message: string;
+};
+
+type UIState = {
+  cartIsVisible: boolean;
+  notification: NotificationData | null;
+};
+
+const initialUIState: UIState = {
   cartIsVisible: false,
   notification: null,
 };
@@ -10,7 +21,6 @@ const uiSlice = createSlice({
   initialState: initialUIState,
   reducers: {
     toggle(state) {
-      console.log("testing1 headercart");
       state.cartIsVisible = !state.cartIsVisible;
     },
 

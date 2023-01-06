@@ -1,10 +1,11 @@
 import { uiActions } from "./ui-slice";
-import { cartActions } from "./cart-slice";
+import { cartActions, CartState } from "./cart-slice";
+import { RootDispatch } from "./app-store";
 
-const backendURL = process.env.REACT_APP_DB_HOST + process.env.REACT_APP_CART_NAME;
+const backendURL: string = (process.env.REACT_APP_DB_HOST as string) + process.env.REACT_APP_CART_NAME;
 
 export const fetchCartData = () => {
-  return async (dispatch) => {
+  return async (dispatch: RootDispatch) => {
     const fetchData = async () => {
       const response = await fetch(backendURL);
       if (!response.ok) {
@@ -34,8 +35,8 @@ export const fetchCartData = () => {
   };
 };
 
-export const sendCartData = (cart) => {
-  return async (dispatch) => {
+export const sendCartData = (cart: CartState) => {
+  return async (dispatch: RootDispatch) => {
     dispatch(
       uiActions.showNotification({
         status: "pending",
@@ -77,8 +78,8 @@ export const sendCartData = (cart) => {
   };
 };
 
-export const confirmOrder = (cart) => {
-  return async (dispatch) => {
+export const confirmOrder = (cart: CartState) => {
+  return async (dispatch: RootDispatch) => {
     const response = await fetch(backendURL, {
       method: "POST",
       body: JSON.stringify(cart),

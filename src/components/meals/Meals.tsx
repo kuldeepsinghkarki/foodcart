@@ -2,9 +2,12 @@ import AvailableMeals from "./AvailableMeals";
 import MealsSummary from "./MealsSummary";
 import { useSelector } from "react-redux";
 import Notification from "../ui/Notification";
+import { PropsWithChildren } from "react";
+import { MealsDataType } from "../models/MealsDataType";
+import { RootState } from "../../store/app-store";
 
-const Meals = (props) => {
-  const notification = useSelector((state) => state.ui.notification);
+const Meals = (props: PropsWithChildren<{ mealsData: MealsDataType }>) => {
+  const notification = useSelector((state: RootState) => state.ui.notification);
   return (
     <>
       <MealsSummary />

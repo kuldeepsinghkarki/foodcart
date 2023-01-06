@@ -1,7 +1,6 @@
-import { Link, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Offers = () => {
-  const params = useParams();
   return (
     <>
       <p>Available Offers</p>
